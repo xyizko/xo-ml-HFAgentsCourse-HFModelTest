@@ -12,16 +12,22 @@ from .utilz import green_box, blue_box, l_error, write_results_to_file_with_date
 console = Console()
 load_dotenv("src/.env")
 
+# Models
+hf_models = [
+    "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+    "meta-llama/Llama-3.2-1B-Instruct",
+]
+
 
 # Accessing the Qwen Model
 def qwen15():
     os.system("clear")
     """
-    Inference with the LLAMA Client
-    meta-llama/Llama-3.3-70B-Instruct
+    Inference with DeepSeek AI's Qwen-1.5B Model
+    "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
     """
 
-    model = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
+    model = hf_models[0]
     console.rule(f"{model}", style="blue")
     ask_query = Prompt.ask(
         "Enter your query",
@@ -63,7 +69,7 @@ def llam2():
     meta-llama/Llama-3.3-70B-Instruct
     """
 
-    model = "meta-llama/Llama-3.2-1B-Instruct"
+    model = hf_models[1]
     console.rule(f"{model}", style="blue")
     ask_query = Prompt.ask(
         "Enter your query",

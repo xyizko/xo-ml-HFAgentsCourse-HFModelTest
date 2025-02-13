@@ -3,6 +3,7 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.prompt import Prompt
 from .work1 import qwen15, llam2
+from .utilz import get_banner
 import os
 
 console = Console()
@@ -31,6 +32,7 @@ def display_menu():
 
 def show_menu():
     os.system("clear")
+    get_banner()
     choice = display_menu()
     if choice == 1:
         qwen15()

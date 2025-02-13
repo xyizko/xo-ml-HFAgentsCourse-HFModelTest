@@ -1,5 +1,6 @@
 import logging
 import os
+import requests as rq
 from datetime import datetime
 from rich import print as rprint  # For rprinting
 from rich.pretty import pprint  # For pretty printing
@@ -92,3 +93,13 @@ def write_results_to_file_with_date(model, ask_query, client_reply):
         file.write(f"## Time: {timestamp}\n")
         file.write(f"## Query: {ask_query}\n")
         file.write(f"Response: {client_reply}\n")
+
+
+def get_banner():
+    url = "https://snips.sh/f/ZuwtQ3Pk0x?r=1"
+    try:
+        r = rq.get(url)
+        r.raise_for_status()
+        print(r.text)
+    except rq.RequestException as e:
+        l_error(f"Failed to fetch {url}: {e}")
